@@ -2,11 +2,32 @@
 
 ## Product API
 
-### Endpoint
+#### Create a Product
 
 **URL:** `https://supplier-stage.drophub.ir/v1/sync/product`
 
+**Method:** `POST`
+
+**Response Status Codes:**
+
+- `200`: Success
+- `400`: If the payload is invalid
+- `403`: If the API key or integration key is invalid
+- `500`: Server error
+
+#### Update an Existing Product
+
+**URL:** `https://supplier-stage.drophub.ir/v1/sync/product/{id}`
+
 **Method:** `PUT`
+
+**Response Status Codes:**
+
+- `200`: Success
+- `400`: If the payload is invalid
+- `403`: If the API key or integration key is invalid
+- `404`: If the given ID is not found
+- `500`: Server error
 
 ### Headers
 
@@ -36,8 +57,8 @@
 | `variants.*.is_active`        | boolean | Yes      | Indicates if the variant is active.                                                                                |
 | `variants.*.price`            | number  | Yes      | The price of the variant.                                                                                          |
 | `variants.*.compare_at_price` | number  | No       | The original price of the variant before any discounts.                                                            |
-| `variants.options`            | object  | No       | Variant-specific options (e.g., size, color). If the product has no variants, this must be `null`.                 |
-| `variants.sku`                | string  | No       | The stock keeping unit for the variant. Max length: 64                                                             |
+| `variants.*.options`          | object  | No       | Variant-specific options (e.g., size, color). If the product has no variants, this must be `null`.                 |
+| `variants.*.sku`              | string  | No       | The stock keeping unit for the variant. Max length: 64                                                             |
 
 ### Example Request Body
 
@@ -128,5 +149,26 @@ A product without variants
     "tag1",
     "tag2"
   ]
+}
+```
+
+
+### Success Response
+
+```json
+{
+  "data": {
+    "id": "<string uuid>"
+  },
+  "status": "OK"
+}
+```
+
+### Error Response
+
+```json
+{
+  "error": "....",
+  "error_detail": "...."
 }
 ```
