@@ -4,7 +4,7 @@
 
 #### Create a Product
 
-**URL:** `https://supplier-stage.drophub.ir/v1/sync/product`
+**URL:** `https://dev-api.drophub.ir/v1/sync/product`
 
 **Method:** `POST`
 
@@ -17,7 +17,7 @@
 
 #### Update an Existing Product
 
-**URL:** `https://supplier-stage.drophub.ir/v1/sync/product/{id}`
+**URL:** `https://dev-api.drophub.ir/v1/sync/product/{id}`
 
 **Method:** `PUT`
 
