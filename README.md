@@ -2,7 +2,7 @@
 
 ## Product API
 
-#### To Create a Product or Update an Existing Product
+#### To Create a New Product or Update an Existing Product
 
 **URL:** `https://dev-api.drophub.ir/v1/sync/product`
 
