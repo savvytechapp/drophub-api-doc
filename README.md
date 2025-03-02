@@ -2,22 +2,9 @@
 
 ## Product API
 
-#### Create a Product
+#### To Create a Product or Update an Existing Product
 
 **URL:** `https://dev-api.drophub.ir/v1/sync/product`
-
-**Method:** `POST`
-
-**Response Status Codes:**
-
-- `200`: Success
-- `400`: If the payload is invalid
-- `403`: If the API key or integration key is invalid
-- `500`: Server error
-
-#### Update an Existing Product
-
-**URL:** `https://dev-api.drophub.ir/v1/sync/product/{id}`
 
 **Method:** `PUT`
 
