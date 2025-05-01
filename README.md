@@ -41,6 +41,7 @@
 | `variants`                    | array   | Yes      | A list of product variants.                                                                                        |
 | `variants.*.id`               | string  | Yes      | A unique identifier for the variant. For products without multiple variants, this is the same as the product `id`. |
 | `variants.*.inventory`        | integer | Yes      | The available stock quantity for the variant. Min value: 0                                                         |
+| `variants.*.backorder`        | boolean | No       | Continue selling when out of stock. Default: false                                                                 |
 | `variants.*.is_active`        | boolean | Yes      | Indicates if the variant is active.                                                                                |
 | `variants.*.price`            | number  | Yes      | The price of the variant.                                                                                          |
 | `variants.*.compare_at_price` | number  | No       | The original price of the variant before any discounts.                                                            |
