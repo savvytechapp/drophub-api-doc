@@ -11,7 +11,7 @@
 
 #### Retailers can use this API to send a list of categories to Drophub. We need categories to assign products to them, so without categories, retailers cannot publish their products.
 
-####                        
+####                         
 
 **URL:** `https://dev-api.drophub.ir/v1/partner/retailer/product/category`
 
@@ -78,12 +78,13 @@
 
 `status` with the following values: Pending, Live, Archived.
 
-Only `Live` products can be sold on Drophub. So you must show products with the `Live` status to your customers. and if
+Only `Live` products can be sold on Drophub. So you must show products with the `Live` status to your customers. And if
 a product status is `Pending` or `Archived`, you must hide it from your customers.
-Therefore, you must call this API constantly (e.g. every 5 minutes) to get the latest updates of your products which can
-be changes on statuses, prices, stock and ...
+Therefore, you must call this API constantly (e.g., every 5 minutes) to get the latest updates of your products, which
+can
+be changes on statuses, prices, stock, and ...
 
-To prevent getting too many results, you can use the `timestampe` filter to get the products which were created/updated
+To prevent getting too many results, you can use the `timestamp` filter to get the products that were created/updated
 after a specific date.
 
 **URL:** `https://dev-api.drophub.ir/v1/partner/retailer/product`
@@ -124,14 +125,14 @@ The response is a JSON object containing the list of products and pagination det
 | `pagination.total`                               | integer       | The total number of orders available.                                                  |
 | `data`                                           | array         | An array of order objects.                                                             |
 | `data.*.id`                                      | uuid          | The unique identifier for the product (UUID).                                          |
-| `data.*.category_id`                             | string        | Category ID that same as id that you've sent to us.                                    |
+| `data.*.category_id`                             | string        | Category ID that is the same as the ID that you've sent to us.                         |
 | `data.*.title`                                   | string        | The title of the product.                                                              |
 | `data.*.description`                             | string        | The description of the product.                                                        |
 | `data.*.status`                                  | enum          | The current status of the products. <br>Possible values: `Pending`, `Live`, `Archived` |
 | `data.*.tags`                                    | array(string) | The tags of the product.                                                               |
 | `data.*.created_at`                              | string        | The timestamp of when the product was created (ISO 8601).                              |
 | `data.*.updated_at`                              | string        | The timestamp of the last update to the product (ISO 8601).                            |
-| `data.*.images`                                  | array         | An array of image objects that related to the product.                                 |
+| `data.*.images`                                  | array         | An array of image objects that are related to the product.                             |
 | `data.*.images.*.url`                            | string        | The URL of the image.                                                                  |
 | `data.*.images.*.alt`                            | string        | The alternative text for the image.                                                    |
 | `data.*.images.*.marked_as_cover`                | bool          | Indicates whether the image is the main image for the product.                         |
@@ -150,7 +151,7 @@ The response is a JSON object containing the list of products and pagination det
 | `data.*.shipping_policies.*.shipping_to`         | object        | The shipping destination.                                                              |
 | `data.*.shipping_policies.*.shipping_to.country` | string        | The country of the shipping destination.                                               |
 | `data.*.shipping_policies.*.shipping_to.state`   | string        | The state of the shipping destination.                                                 |
-| `data.*.shipping_policies.*.shipping_to.city`    | string        | THe city of the shipping destination.                                                  |                                                                                    |
+| `data.*.shipping_policies.*.shipping_to.city`    | string        | THe city of the shipping destination.                                                  |
 | `data.*.shipping_policies.*.shipping_time`       | object        | The shipping time.                                                                     |
 | `data.*.shipping_policies.*.rate`                | decimal       | The shipping rate.                                                                     |
 | `data.*.shipping_policies.*.extra_item_rate`     | decimal       | The extra rate for additional items.                                                   |
@@ -165,92 +166,3 @@ The response is a JSON object containing the list of products and pagination det
 | `data.*.return_policy.description`               | string        | The return description.                                                                |
 
 -----
-
-### Example Success Response
-
-```json
-{
-  "status": "OK",
-  "pagination": {
-    "page_size": 1,
-    "page": 1,
-    "total": 100
-  },
-  "data": [
-    {
-      "id": "a1b2c3d4-e5f6-7890-1234-567890abcdef",
-      "order_number": "DH-1001",
-      "state": "InProgress",
-      "state_history": [
-        {
-          "state": "InProgress",
-          "comment": "Payment received.",
-          "created_at": "2025-07-10T10:05:00Z"
-        },
-        {
-          "state": "Pending",
-          "comment": "Order created.",
-          "created_at": "2025-07-10T10:00:00Z"
-        }
-      ],
-      "shipping_address": {
-        "location_id": "f0e9d8c7-b6a5-4321-fedc-ba9876543210",
-        "state": "Tehran",
-        "city": "Tehran",
-        "address1": "123 Enghelab St.",
-        "address2": "Apt. 4B",
-        "zip": "12345-67890",
-        "phone_number": "09123456789",
-        "company": ""
-      },
-      "customer": {
-        "title": "Mr",
-        "first_name": "John",
-        "last_name": "Doe",
-        "company": "Doe Inc.",
-        "email": "john.doe@example.com",
-        "phone_number": "09123456789"
-      },
-      "total_price": 550000,
-      "subtotal_price": 500000,
-      "shipping_cost": 50000,
-      "created_at": "2025-07-10T10:00:00Z",
-      "updated_at": "2025-07-10T10:05:00Z",
-      "line_items": [
-        {
-          "products_id": "PROD-001",
-          "variant_id": "VAR-002",
-          "sku": "TSHIRT-BLUE-L",
-          "quantity": 2,
-          "title": "Blue T-Shirt",
-          "state": "Pending",
-          "state_history": [],
-          "list_price": 250000,
-          "shipping_cost": 25000,
-          "shipping_time": {
-            "min": 2,
-            "max": 5
-          },
-          "options": {
-            "Color": "Blue",
-            "Size": "L"
-          },
-          "created_at": "2025-07-10T10:00:00Z",
-          "updated_at": "2025-07-10T10:00:00Z"
-        }
-      ],
-      "shipment_details": [
-        {
-          "tracking_code": "JD123456789",
-          "tracking_url": "https://carrier.example.com/track/JD123456789",
-          "note": "Handle with care",
-          "document_url": "https://api.example.com/documents/shipment-1.pdf",
-          "carrier": "Peyk",
-          "created_at": "2025-07-10T14:00:00Z",
-          "update_at": "2025-07-10T14:00:00Z"
-        }
-      ]
-    }
-  ]
-}
-```
